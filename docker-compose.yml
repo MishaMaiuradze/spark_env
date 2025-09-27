@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  spark:
+    build: .
+    container_name: pyspark-sql-container
+    ports:
+      - "4040:4040"  # Spark UI
+      - "8080:8080"  # Spark Master UI
+      - "7077:7077"  # Spark Master port
+      - "8888:8888"  # Jupyter Notebook
+    volumes:
+      - ./:/app  # Mount current directory to /app in container
+      - ./data:/data  # Mount data directory
+      - ./notebooks:/app/notebooks  # Mount notebooks directory
+    environment:
+      - PYSPARK_PYTHON=/usr/bin/python3
+      - PYSPARK_DRIVER_PYTHON=/usr/bin/python3
+    # Add this command to keep the container running
+    command: bash -c "while true; do sleep 30; done"
+    networks:
+      - spark-network
+
+networks:
+  spark-network:
+    driver: bridge
