@@ -1,0 +1,9 @@
+
+attach spark
+docker exec -it 843e3fabd146 /bin/bash
+
+connect spark serice:
+$SPARK_HOME/bin/pyspark
+
+#check python
+python3 -c "import pyspark; print(pyspark.__version__)"

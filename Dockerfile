@@ -30,7 +30,8 @@ RUN pip install --no-cache-dir \
     jupyter \
     jupyterlab \
     notebook \
-    py4j
+    py4j \
+    spark_docker_connect
 
 # Set environment variables
 ENV PYTHONPATH="${SPARK_HOME}/python:${SPARK_HOME}/python/lib/py4j-0.10.9.5-src.zip:${PYTHONPATH}"

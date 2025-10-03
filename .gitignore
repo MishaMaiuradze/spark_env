@@ -24,6 +24,9 @@ var/
 # Jupyter Notebook
 .ipynb_checkpoints
 
+#data
+pyspark-zero-to-hero-master/data/output/
+
 # Data and logs
 data/
 logs/

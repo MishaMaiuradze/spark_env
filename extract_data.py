@@ -7,9 +7,15 @@ import logging
 from datetime import datetime
 import pandas as pd
 from dotenv import load_dotenv
+from pyspark.sql import SparkSession
 
-# Import Spark connection helper
-from spark_docker_connect import get_spark_session
+def get_spark_session(app_name):
+    """Create and return a Spark session"""
+    return SparkSession.builder \
+        .appName(app_name) \
+        .master("local[*]") \
+        .config("spark.jars", "/opt/spark/jars/mssql-jdbc-12.2.0.jre8.jar") \
+        .getOrCreate()
 
 # Configure logging
 logging.basicConfig(
